@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
     }
 
     table {
-      width: 100%;
+      width: 60%;
       border-collapse: collapse;
       background-color: white;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -67,7 +68,7 @@
 		List<BoardDto> boardList = new ArrayList<BoardDto>();
 		//게시글(boardDto)를 여러개 담을 ArrayList 준비(선언)
 		
-		boardList.add(new BoardDto(1, "안녕하세요. 첫글입니다.", "이순신", "2025-08-01"));
+		boardList.add(new BoardDto(1, "안녕하세요. 첫글입니다.안녕하세요. 첫글입니다.안녕하세요. 첫글입니다.안녕하세요. 첫글입니다.안녕하세요. 첫글입니다.", "이순신", "2025-08-01"));
 		boardList.add(new BoardDto(2, "오늘 날씨가 비오네요", "김유신", "2025-08-03"));
 		boardList.add(new BoardDto(3, "요즘 날씨가 너무 더워요", "강감찬", "2025-08-04"));
 		boardList.add(new BoardDto(4, "안녕하세요. 가입합니다.", "홍길동", "2025-08-04"));
@@ -91,7 +92,16 @@
 		<c:forEach var="boardDto" items="${boardList }">
 			<tr>
 				<td>${boardDto.bnum }</td>
-				<td><a href="#">${boardDto.btitle }</a></td>
+				<td>
+					<c:choose>
+						<c:when test="${fn:length(boardDto.btitle) > 40}">
+							<a href="#">${fn:substring(boardDto.btitle, 0, 40)}...</a>
+						</c:when>
+						<c:otherwise>
+							${boardDto.btitle }
+						</c:otherwise>
+					</c:choose>
+				</td>
 				<td>${boardDto.bwriter }</td>
 				<td>${boardDto.bdate }</td>
 			</tr>
