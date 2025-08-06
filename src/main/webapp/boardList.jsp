@@ -70,7 +70,7 @@
 		
 		boardList.add(new BoardDto(1, "안녕하세요. 첫글입니다.안녕하세요. 첫글입니다.안녕하세요. 첫글입니다.안녕하세요. 첫글입니다.안녕하세요. 첫글입니다.", "이순신", "2025-08-01"));
 		boardList.add(new BoardDto(2, "오늘 날씨가 비오네요", "김유신", "2025-08-03"));
-		boardList.add(new BoardDto(3, "요즘 날씨가 너무 더워요", "강감찬", "2025-08-04"));
+		boardList.add(new BoardDto(3, "요즘 날씨가 너무 더워요 요즘 날씨가 너무 더워요요즘 날씨가 너무 더워요요즘 날씨가 너무 더워요요즘 날씨가 너무 더워요", "강감찬", "2025-08-04"));
 		boardList.add(new BoardDto(4, "안녕하세요. 가입합니다.", "홍길동", "2025-08-04"));
 		boardList.add(new BoardDto(5, "저는 야구를 좋아해요.", "이순신", "2025-08-05"));
 	
@@ -93,6 +93,7 @@
 			<tr>
 				<td>${boardDto.bnum }</td>
 				<td>
+				<!-- 게시판 글 제목이 40자 이상일때 40자 이상은 ...표시  -->
 					<c:choose>
 						<c:when test="${fn:length(boardDto.btitle) > 40}">
 							<a href="#">${fn:substring(boardDto.btitle, 0, 40)}...</a>
