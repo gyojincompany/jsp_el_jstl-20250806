@@ -8,6 +8,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style type="text/css">
+	body {
+      font-family: "Malgun Gothic", sans-serif;
+      background-color: #f9f9f9;
+      padding: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    thead {
+      background-color: #f1f1f1;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    td:nth-child(2) {
+      text-align: left;
+      color: #0056b3;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    a {
+      text-decoration: none;
+      color: #0056b3;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+	
+	
+</style>
 <title>자유 게시판</title>
 </head>
 <body>
@@ -29,18 +78,20 @@
 	
 	<h2>자유 게시판 목록</h2>
 	<hr>
-	<table border="1" cellpadding="0" cellspacing="0">
+	<table>
+		<thead>
 		<tr>
 			<th>No.</th>
 			<th>제목</th>
 			<th>글쓴이</th>
 			<th>날짜</th>
 		</tr>
+		</thead>
 		
 		<c:forEach var="boardDto" items="${boardList }">
 			<tr>
 				<td>${boardDto.bnum }</td>
-				<td>${boardDto.btitle }</td>
+				<td><a href="#">${boardDto.btitle }</a></td>
 				<td>${boardDto.bwriter }</td>
 				<td>${boardDto.bdate }</td>
 			</tr>
